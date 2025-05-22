@@ -5,23 +5,26 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'storybook-button',
   standalone: true,
   imports: [CommonModule],
-  template: ` <button
-  type="button"
-  (click)="onClick.emit($event)"
-  class="btn"
-  [ngClass]="classes"
->
-  {{ label }}
-</button>`
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-  @Input() primary = false;
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
-  @Input() label = 'Button';
+  @Input() label: string = 'Button';
+  @Input() type: "button" | "submit" | "reset" = "button";
+  @Input() rank: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark" | "link" = "primary";
+  @Input() outline = false;
+  @Input() size: "sm" | "md" | "lg" = "md";
+  @Input() disabled=false;
+  @Input() iconLeft?: 'add_circlr-outline' | string;
+  @Input() inProgress=false;
+  
   @Output() onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'btn-primary' : 'btn-secondary';
-    return ['btn', `btn-${this.size}`, mode];
+    let outlineString = "";
+    if (this.outline) {
+      outlineString = "outline-"
+    }
+    return ['btn', `btn-` + `${outlineString}` + `${this.rank}`, `btn-${this.size}`];
   }
 }
