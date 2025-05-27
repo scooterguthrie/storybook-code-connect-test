@@ -60,7 +60,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"container-xxl\">\r\n  <h1>Test</h1>\r\n  <storybook-button [rank]=\"'secondary'\"></storybook-button>\r\n</div>"
+            "templateData": "<div class=\"container-xxl\">\r\n  <h1>Test</h1>\r\n  <storybook-button></storybook-button>\r\n</div>"
         },
         {
             "name": "ButtonComponent",
@@ -195,7 +195,7 @@
                     }
                 }
             },
-            "templateData": "<button\r\n  type=\"button\"\r\n  (click)=\"onClick.emit($event)\"\r\n  class=\"btn\"\r\n  [ngClass]=\"classes\"\r\n>\r\n  {{ label }}\r\n</button>"
+            "templateData": "<button\r\n  (click)=\"onClick.emit($event)\"\r\n  [ngClass]=\"classes\"\r\n  [type]=\"type\"\r\n  [disabled]=\"disabled\"\r\n>\r\n  {{ label }}\r\n</button>"
         }
     ],
     "modules": [],
